@@ -1,0 +1,55 @@
+body {
+    background-color: burlywood;
+}
+h1 {
+    background: linear-gradient(blue,rgb(52, 140, 170), rgb(192, 253, 255));
+    box-shadow: 0 5px 10px rgb(199, 7, 7);
+}
+.table {
+    border-collapse: separate;
+    border-spacing: 2px 10px;
+}
+.table thead th {
+    text-align: center;
+    vertical-align: middle;
+    background-color: #343a40;
+    color: #ffc107;
+    border-radius: 8px;
+}
+.taskID {
+    font-weight: bolder;
+    font-size: large;
+    font-style:italic;
+}
+.task {
+    font-style: normal;
+    font-weight:600;
+}
+.status {
+    color:rgb(75, 2, 75);
+    font-weight:800;
+}
+td .edit {
+    border: 1px solid black;
+    background: linear-gradient(yellow,orange);
+}
+.edit{
+    
+    color:rgb(34, 21, 5);
+    font-weight: 600;
+}
+td .removeTask {
+    color:#1d1604;
+    font-weight: 500;
+    border: 1px solid black;
+    background: linear-gradient(rgb(255, 30, 0),rgb(255, 0, 221));
+}
+div label {
+    font-weight: 500;
+}
+.addNewTask {
+    color:#1d1604;
+    font-weight: 500;
+    border: 1px solid black;
+    background: linear-gradient(rgb(12, 145, 179),rgb(4, 231, 212));
+}

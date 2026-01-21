@@ -32,8 +32,8 @@ $('.addNewTask').click(function () {
             $('.todoBody').append(
                     '<tr class="bg-info mb-3 text-center">' +
                     '<td class="taskID">' + response.task.id + '</td>' +
-                    '<td>' + response.task.content + '</td>' +
-                    '<td>' + statusText + '</td>' +
+                    '<td class="task">' + response.task.content + '</td>' +
+                    '<td class="status">' + statusText + '</td>' +
                     '<td><button class="btn btn-sm btn-warning edit">' + editText + '</button></td>' +
                     '<td><button class="btn btn-sm btn-danger removeTask">REMOVE</button></td>' +
                     '</tr>'
@@ -121,8 +121,8 @@ $('.listAllTask').click(function () {
                 $('.todoBody').append(
                     '<tr class="' + rowColor + ' mb-3 text-center">' +
                     '<td class="taskID">' + task.id + '</td>' +
-                    '<td>' + task.content + '</td>' +
-                    '<td>' + statusText + '</td>' +
+                    '<td class="task">' + task.content + '</td>' +
+                    '<td class="status">' + statusText + '</td>' +
                     '<td><button class="btn btn-sm btn-warning edit">' + editText + '</button></td>' +
                     '<td><button class="btn btn-sm btn-danger removeTask">REMOVE</button></td>' +
                     '</tr>'
@@ -154,8 +154,8 @@ $('.listAllTask').click(function () {
                     $('.todoBody').append(
                         '<tr class="bg-success mb-1 text-center">' +
                         '<td><span class="taskID">' + task.id + '</span></td>' +
-                        '<td>' + task.content + '</td>' +
-                        '<td>Comp</td>' +
+                        '<td class="task">' + task.content + '</td>' +
+                        '<td class="status">Completed</td>' +
                         '<td><button class="btn btn-sm btn-warning edit">Mark Active</button></td>' + '<td><button class="btn btn-sm btn-danger removeTask">REMOVE</button></td>' +
                         '</tr>'
                     );
@@ -191,8 +191,8 @@ $('.listAllActive').click(function() {
                     $('.todoBody').append(
                         '<tr class="bg-info mb-1 text-center">' +
                         '<td><span class="taskID">' + task.id + '</span></td>' +
-                        '<td>' + task.content + '</td>' +
-                        '<td>Act</td>' +
+                        '<td class="task">' + task.content + '</td>' +
+                        '<td class="status">Active</td>' +
                         '<td><button class="btn btn-sm btn-warning edit">Mark Completed</button></td>' +
                         '<td><button class="btn btn-sm btn-danger removeTask">REMOVE</button></td>' +
                         '</tr>'
