@@ -30,7 +30,7 @@ $('.addNewTask').click(function () {
             }
             
             $('.todoBody').append(
-                    '<tr class="bg-info mb-1 text-center">' +
+                    '<tr class="bg-info mb-3 text-center">' +
                     '<td class="taskID">' + response.task.id + '</td>' +
                     '<td>' + response.task.content + '</td>' +
                     '<td>' + statusText + '</td>' +
@@ -119,7 +119,7 @@ $('.listAllTask').click(function () {
             }
                 
                 $('.todoBody').append(
-                    '<tr class="' + rowColor + ' mb-1 text-center">' +
+                    '<tr class="' + rowColor + ' mb-3 text-center">' +
                     '<td class="taskID">' + task.id + '</td>' +
                     '<td>' + task.content + '</td>' +
                     '<td>' + statusText + '</td>' +
@@ -135,6 +135,81 @@ $('.listAllTask').click(function () {
         }
     })//foreach
 }) //listalltask
+
+ //To get list of Completed tasks
+ $('.listAllCompleted').click(function() {
+
+    $.ajax({
+        type: 'GET',
+        url: 'https://fewd-todolist-api.onrender.com/tasks?api_key=37',
+        dataType: 'json',
+        success: function(response) {
+
+            $('.todoBody').empty();
+
+            response.tasks.forEach(function(task) {
+
+                if (task.completed) {
+
+                    $('.todoBody').append(
+                        '<tr class="bg-success mb-1 text-center">' +
+                        '<td><span class="taskID">' + task.id + '</span></td>' +
+                        '<td>' + task.content + '</td>' +
+                        '<td>Comp</td>' +
+                        '<td><button class="btn btn-sm btn-warning edit">Mark Active</button></td>' + '<td><button class="btn btn-sm btn-danger removeTask">REMOVE</button></td>' +
+                        '</tr>'
+                    );
+                }
+
+            });
+            console.log(response);
+
+        },
+        error: function(request, textStatus, errorMessage) {
+            console.log(errorMessage);
+        }
+
+
+    })
+})
+
+//To get list of Active tasks
+$('.listAllActive').click(function() {
+
+    $.ajax({
+        type: 'GET',
+        url: 'https://fewd-todolist-api.onrender.com/tasks?api_key=37',
+        dataType: 'json',
+        success: function(response) {
+
+            $('.todoBody').empty();
+
+            response.tasks.forEach(function(task) {
+
+                if (!task.completed) {
+
+                    $('.todoBody').append(
+                        '<tr class="bg-info mb-1 text-center">' +
+                        '<td><span class="taskID">' + task.id + '</span></td>' +
+                        '<td>' + task.content + '</td>' +
+                        '<td>Act</td>' +
+                        '<td><button class="btn btn-sm btn-warning edit">Mark Completed</button></td>' +
+                        '<td><button class="btn btn-sm btn-danger removeTask">REMOVE</button></td>' +
+                        '</tr>'
+                    );
+                }
+
+            });
+            console.log(response);
+
+        },
+        error: function(request, textStatus, errorMessage) {
+            console.log(errorMessage);
+        }
+
+
+    })
+})
 
 
 }); //document
