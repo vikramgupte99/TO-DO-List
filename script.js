@@ -19,12 +19,26 @@ $('.addNewTask').click(function () {
         success: function (response) {
             $('.todoBody').empty();
 
+            var statusText;
+            if(response.task.completed) {
+                statusText = "Completed";
+            } else {
+                statusText = "Active"
+            }
+
+            var editText;
+            if(response.task.completed) {
+                editText = "Mark Active";
+            } else {
+                editText = "Mark Completed";
+            }
+
                 $('.todoBody').append(
                     '<tr class="bg-info mb-1 text-center">' +
                     '<td class="taskID">' + response.task.id + '</td>' +
                     '<td>' + response.task.content + '</td>' +
-                    '<td>Active</td>' +
-                    '<td><button class="btn btn-sm btn-warning edit">Mark completed</button></td>' +
+                    '<td>' + statusText + '</td>' +
+                    '<td><button class="btn btn-sm btn-warning edit">' + editText + '</button></td>' +
                     '<td><button class="btn btn-sm btn-danger removeTask">REMOVE</button></td>' +
                     '</tr>'
                 );
@@ -36,4 +50,8 @@ $('.addNewTask').click(function () {
         }
     })
 }) //addNewTask
-})//document
+
+//Function to get All Tasks
+
+
+}); //document
