@@ -14,18 +14,18 @@
         <div class="container mw-75">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="bg-primary header">TO-DO TASK LIST</h1>
-                    <table class="table table bordered">
+                    <h1 class=" bg-primary text-center my-3 p-2 rounded header">TO-DO TASK LIST</h1>
+                    <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th scope="col" class="pb-4">Task ID</th>
-                                <th scope="col" class="pb-4">Task</th>
-                                <th scope="col" class="pb-4">Status></th>
-                                <th scope="col" class="pb-4">Mark<br>Complete/Active</th>
-                                <th scope="col" class="pb-4">Delete</th>
+                            <tr class="text-center pb-3 bg-warning">
+                                <th scope="col" class="p-1">Task ID</th>
+                                <th scope="col" class="p-1">Task</th>
+                                <th scope="col" class="p-1">Status></th>
+                                <th scope="col" class="p-1">Mark<br>Complete/Active</th>
+                                <th scope="col" class="p-1">Delete</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="todoBody">
                             <tr class="bg-info mb-3 text-center">
                                 <td><span class="taskID">301</span></td>
                                 <td>hello again</td>
@@ -35,9 +35,22 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> <!--Col-12-->
+            </div> <!--Row-->
+
+            
+            <div class="text-center">
+                <label class="mr-1">Add New Task: </label>
+                <input class="mr-1 py-1 input" type="text">
+                <button type="button" class="btn btn-info text-warning addNewTask">SUBMIT</button>
             </div>
-        </div>
+            <div class='text-center my-4'>
+                <button type="button" class="btn-success mr-2 p-1 listAllTask">All Tasks</button>
+                <button type="button" class="btn-success mr-2 p-1 listAllCompleted">Completed</button>
+                <button type="button" class="btn-success p-1 listAllActive">Active</button>
+            </div>
+            
+        </div> <!--Container-->
         <script src="script.js"></script>
     </body>
 </html>
