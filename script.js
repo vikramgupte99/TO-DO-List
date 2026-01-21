@@ -51,6 +51,24 @@ $('.addNewTask').click(function () {
     })
 }) //addNewTask
 
+//function to DELETE task
+$('.todoBody').on('click','.removeTask',function () {
+    var removeRow = $(this).closest('tr');
+    var removeID = removeRow.find('.taskID').text();
+
+    $.ajax({
+        type: "DELETE",
+        url: 'https://fewd-todolist-api.onrender.com/tasks/' + removeID + '?api_key=37',
+        success: function (response) {
+            removeRow.remove();
+            console.log(response);
+        },
+        error: function (errorMessage) {
+            console.log(errorMessage);
+        }
+    }) //ajax
+}) //removetask
+
 //Function to get All Tasks
 $('.listAllTask').click(function () {
 
