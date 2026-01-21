@@ -20,20 +20,16 @@ $('.addNewTask').click(function () {
             $('.todoBody').empty();
 
             var statusText;
-            if(response.task.completed) {
-                statusText = "Completed";
-            } else {
-                statusText = "Active"
-            }
-
             var editText;
             if(response.task.completed) {
+                statusText = "Completed";
                 editText = "Mark Active";
             } else {
+                statusText = "Active";
                 editText = "Mark Completed";
             }
-
-                $('.todoBody').append(
+            
+            $('.todoBody').append(
                     '<tr class="bg-info mb-1 text-center">' +
                     '<td class="taskID">' + response.task.id + '</td>' +
                     '<td>' + response.task.content + '</td>' +
@@ -73,6 +69,8 @@ $('.todoBody').on('click','.removeTask',function () {
 $('.todoBody').on('click', '.edit', function() {
     var row = $(this).closest('tr');
     var id = row.find('.taskID').text();
+    var statusToggle = row.find('td').eq(2);
+    var markButton = row.find('.edit');
     var completed = row.hasClass('bg-success');
 
     var toggleUrl = completed ? 'https://fewd-todolist-api.onrender.com/tasks/' + id + '/mark_active?api_key=37' : 'https://fewd-todolist-api.onrender.com/tasks/' + id + '/mark_complete?api_key=37';
@@ -83,6 +81,8 @@ $('.todoBody').on('click', '.edit', function() {
         url: toggleUrl,
 
         success: function(response) {
+            statusToggle.text(completed ? "Active" : "Completed");
+            markButton.text(completed ? "Mark Completed" : "Mark Active");
             row.toggleClass("bg-success bg-info");
             console.log(response);
         },
