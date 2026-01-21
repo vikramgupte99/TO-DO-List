@@ -69,6 +69,31 @@ $('.todoBody').on('click','.removeTask',function () {
     }) //ajax
 }) //removetask
 
+//Function to Mark completed/active
+$('.todoBody').on('click', '.edit', function() {
+    var row = $(this).closest('tr');
+    var id = row.find('.taskID').text();
+    var completed = row.hasClass('bg-success');
+
+    var toggleUrl = completed ? 'https://fewd-todolist-api.onrender.com/tasks/' + id + '/mark_active?api_key=37' : 'https://fewd-todolist-api.onrender.com/tasks/' + id + '/mark_complete?api_key=37';
+
+
+    $.ajax({
+        type: 'PUT',
+        url: toggleUrl,
+
+        success: function(response) {
+            row.toggleClass("bg-success bg-info");
+            console.log(response);
+        },
+        error: function(errorMessage) {
+            console.log(errorMessage);
+        }
+    })
+
+})
+
+
 //Function to get All Tasks
 $('.listAllTask').click(function () {
 
@@ -80,22 +105,21 @@ $('.listAllTask').click(function () {
             $('.todoBody').empty();
 
             response.tasks.forEach(function(task) {
+            var rowColor;
             var statusText;
-            if(task.completed) {
-                statusText = "Completed";
-            } else {
-                statusText = "Active";
-            }
-
             var editText;
             if(task.completed) {
+                rowColor = "bg-success";
+                statusText = "Completed";
                 editText = "Mark Active";
             } else {
+                rowColor = "bg-info";
+                statusText = "Active";
                 editText = "Mark Completed";
             }
                 
                 $('.todoBody').append(
-                    '<tr class="bg-info mb-1 text-center">' +
+                    '<tr class="' + rowColor + ' mb-1 text-center">' +
                     '<td class="taskID">' + task.id + '</td>' +
                     '<td>' + task.content + '</td>' +
                     '<td>' + statusText + '</td>' +
