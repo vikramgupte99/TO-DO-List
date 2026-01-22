@@ -46,8 +46,15 @@ $('.addNewTask').click(function () {
         }
     })
 }) //addNewTask
+}); //document
+
+
+
+
 
 //function to DELETE task
+$(document).ready(function() {
+console.log('DOM ready for delete !');
 $('.todoBody').on('click','.removeTask',function () {
     var removeRow = $(this).closest('tr');
     var removeID = removeRow.find('.taskID').text();
@@ -64,8 +71,11 @@ $('.todoBody').on('click','.removeTask',function () {
         }
     }) //ajax
 }) //removetask
+});
 
 //Function to Mark completed/active
+$(document).ready(function() {
+console.log('DOM ready for mark !');
 $('.todoBody').on('click', '.edit', function() {
     var row = $(this).closest('tr');
     var id = row.find('.taskID').text();
@@ -92,9 +102,12 @@ $('.todoBody').on('click', '.edit', function() {
     })
 
 })
+});
 
 
 //Function to get All Tasks
+$(document).ready(function() {
+console.log('DOM ready for All tasks !');
 $('.listAllTask').click(function () {
 
     $.ajax({
@@ -135,8 +148,11 @@ $('.listAllTask').click(function () {
         }
     })//foreach
 }) //listalltask
+});
 
  //To get list of Completed tasks
+$(document).ready(function() {
+console.log('DOM ready for Completed tasks !');
  $('.listAllCompleted').click(function() {
 
     $.ajax({
@@ -172,8 +188,11 @@ $('.listAllTask').click(function () {
 
     })
 })
+});
 
 //To get list of Active tasks
+$(document).ready(function() {
+console.log('DOM ready for Active tasks !');
 $('.listAllActive').click(function() {
 
     $.ajax({
@@ -210,6 +229,6 @@ $('.listAllActive').click(function() {
 
     })
 })
+});
 
 
-}); //document
